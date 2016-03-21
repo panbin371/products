@@ -10,18 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var timeLabel = UILabel()
-    var resetBtn = UIButton()
-    var startBtn = UIButton()
-    var pauseBtn = UIButton()
+    var timeLabel : UILabel!
+    var resetBtn : UIButton!
+    var startBtn : UIButton!
+    var pauseBtn : UIButton!
     var timer = NSTimer()
-    var timeFloat = CGFloat()
+    var timeFloat : CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.timeFloat = 0.0
         
+        self.timeLabel = UILabel()
         self.timeLabel.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height/3)
         self.timeLabel.backgroundColor = UIColor.blackColor()
         self.timeLabel.textAlignment = NSTextAlignment.Center
@@ -38,7 +39,7 @@ class ViewController: UIViewController {
         self.resetBtn.addTarget(self, action: "resetBtnClicked", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(self.resetBtn)
 
-        
+        self.startBtn = UIButton(type: UIButtonType.System)
         self.startBtn.frame = CGRectMake(0, self.view.frame.height/3, self.view.frame.width/2, self.view.frame.height/3*2)
         self.startBtn.backgroundColor = UIColor(red: 82.0/255.0, green: 91.0/255.0, blue: 252.0/255.0, alpha: 1)
         self.startBtn.setTitle("start", forState: UIControlState.Normal)
@@ -47,6 +48,7 @@ class ViewController: UIViewController {
         self.startBtn.showsTouchWhenHighlighted = true
         self.view.addSubview(self.startBtn)
         
+        self.pauseBtn = UIButton(type: UIButtonType.System)
         self.pauseBtn.frame = CGRectMake(self.view.frame.width/2, self.view.frame.height/3, self.view.frame.width/2, self.view.frame.height/3*2)
         self.pauseBtn.backgroundColor = UIColor(red: 102.0/255.0, green: 189.0/255.0, blue: 9.0/255.0, alpha: 1)
         self.pauseBtn.setTitle("pause", forState: UIControlState.Normal)
@@ -64,6 +66,7 @@ class ViewController: UIViewController {
     }
     
     func startBtnClicked() {
+
         if !self.timer.valid {
             //放入后台线程防止主线程阻塞定时器
             dispatch_async(dispatch_get_global_queue(0, 0), { () -> Void in

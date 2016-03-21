@@ -37,6 +37,7 @@ class VideoTableViewCell: UITableViewCell {
         let btn = UIButton(type: UIButtonType.Custom)
         btn.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2-25, 85, 50, 50)
         btn.setImage(UIImage(named: "playBtn"), forState: UIControlState.Normal)
+        btn.userInteractionEnabled = false
         
         self.contentView.addSubview(cellImage)
         self.contentView.addSubview(cellTitle)

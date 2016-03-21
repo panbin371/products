@@ -12,7 +12,7 @@ import AVFoundation
 
 class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    var tableView = UITableView()
+    var tableView : UITableView!
     var data = [
         video(image: "videoScreenshot01", title: "Introduce 3DS Mario", source: "Youtube - 06:32"),
         video(image: "videoScreenshot02", title: "Emoji Among Us", source: "Vimeo - 3:34"),

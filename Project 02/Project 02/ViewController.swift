@@ -10,9 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var mainText = UITextView()
-    var changeBtn = UIButton()
-    var index = NSInteger()
+    var mainText : UITextView!
+    var changeBtn : UIButton!
+    var index : NSInteger!
 
     override func viewDidLoad() {
         super.viewDidLoad()
