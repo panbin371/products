@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
@@ -19,7 +21,10 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         video(image: "videoScreenshot05", title: "Facebook HQ", source: "Facebook - 10:20"),
         video(image: "videoScreenshot06", title: "Lijiang Lugu Lake", source: "Allen - 20:30")
     ]
-
+//    
+//    var playerVc = AVPlayerViewController()
+//    var player = AVPlayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +41,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.blackColor()
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.registerClass(VideoTableViewCell.self, forCellReuseIdentifier: "VideoCell")
         self.view.addSubview(tableView)
     }
@@ -60,8 +66,13 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 2 {
-            
+        if indexPath.row == 1 {
+            let url = NSBundle.mainBundle().URLForResource("emoji zone", withExtension: "mp4")
+            let playerVc = AVPlayerViewController()
+            playerVc.player = AVPlayer(URL: url!)
+            self.presentViewController(playerVc, animated: true, completion: { () -> Void in
+                playerVc.player?.play()
+            })
         }
     }
 }
